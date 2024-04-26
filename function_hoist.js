@@ -20,5 +20,6 @@ var sum3=function (a,b)
 
 console.log(sum2(4,10));  // function expressions helps us to prevent calling the function before it is defined
 console.log(sum(9,8));
+console.log(sum3(9,8));
 //console.log(s(3,9));  => error
 

@@ -67,7 +67,7 @@
     let  name="script1";
 
     setTimeout(function(){
-        console.log("sol3 "+name);
+        console.log("sol1 "+name);
     },1000);
 })();
 
@@ -75,5 +75,5 @@
 
 (function(){
     let name="script2";
-    console.log("sol3 "+name);
+    console.log("sol2 "+name);
 })()

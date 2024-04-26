@@ -57,15 +57,15 @@ f();
 
 
 
-var x3=20;
 
+var x3=20;
 const test=function()
 {
-    console.log(x3); // error becuz cannot access x before initialization
-   let x3=21;
+   console.log("test const x3 ",x3); // error becuz cannot access x before initialization
+   let x3=21; // this error we go away, if we comment line 65
 }
 
-test();
+//test();
 
 
 
@@ -73,7 +73,7 @@ test();
 
 
 var a=10;
-console.log("var abc "+a,b,c);
+console.log("var abc i "+a,b,c);
 if(a<=10)
 {
     console.log("var b "+b);
@@ -84,7 +84,7 @@ else
     var c=30;
 }
 
-console.log("var abc "+ a,b,c);
+console.log("var abc ii "+ a,b,c);
 
 
 
