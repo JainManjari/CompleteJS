@@ -29,7 +29,7 @@ console.log(sym1===sym2) //false
  
  // using for...in
  for (let key in person) {
-     console.log(key);
+     console.log("key ",key);
  }
 
 console.log("person "+JSON.stringify(person));

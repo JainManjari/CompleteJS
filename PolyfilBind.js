@@ -38,7 +38,7 @@ let printObj2 = function(...args) {
     //console.log("printObj2 "+args);
     console.log("printobj2 "+this.name+" "+this.work);
     for (let ele of args) {
-        console.log(ele);
+        console.log("ele "+ele);
     }
 }
 

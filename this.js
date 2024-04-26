@@ -35,7 +35,7 @@
 // // with using 'use strict'
 'use strict'
 
-console.log("strict "+JSON.stringify(this));
+//console.log("strict "+JSON.stringify(this));
 function demo(a,b)
 {
     console.log("demo "+JSON.stringify(this)+" "+a+" "+b); //undefined
@@ -58,21 +58,21 @@ var obj={
      }
 }
 
-obj.print();
+// obj.print();
 
 // obj.print.bind(demo);
 
-// demo();
+// demo(); // undefined, undefined, undefined
 
 //to bind functions to default this value
 
 demo.apply(obj);
-demo();
-//demo.call(obj);
+//console.log("demo applying ",demo());
+demo.call(obj);
 
 // //if func has parameters
-// demo.apply(obj,[3,4]);
-// //demo.call(obj,3,4);
+demo.apply(obj,[3,4]);
+demo.call(obj,3,4);
 
 
 
