@@ -4,12 +4,13 @@ console.log(a[9],a[2],a[-1],a["str"],a[0.6]);
 console.log("a size "+a.length);
 console.log("joining a1 ",a.join());
 console.log(typeof(a));
+console.log("isArray ",Array.isArray(a));
 
 var a1=new Array(16,"",null,"string",undefined,"heloo");
 console.log(a1[9],a1[2],a1[-1],a1["str"],a1[0.6], a1[0]);
 console.log("a1 size "+a1.length);
 console.log("a1 "+a1);
-a1.sort();
+a1.sort(); // sort the array
 console.log("after sorting a1 "+a1);
 
 //empty array

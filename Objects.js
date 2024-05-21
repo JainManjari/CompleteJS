@@ -7,6 +7,24 @@ console.log(obj2);
 
 console.log(obj === obj2) //false
 
+
+// var std={
+//     name:"MJ",
+//     class:"12-X",
+//     rollNo:"22",
+//     "-phone":"67890",
+//     disPlayType:function()
+//     {
+//         return name;
+//     },
+//     updatingName:function(name)
+//     {
+//         this.name=name;
+//     }
+// }
+
+// console.log("updating name ",std.disPlayType()) // error because this.name is not written
+
 var std={
     name:"MJ",
     class:"12-X",
@@ -21,6 +39,8 @@ var std={
         this.name=name;
     }
 }
+
+console.log("updating name ",std.updatingName("hello"), std.name)
 
 
 
