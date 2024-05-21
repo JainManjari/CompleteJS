@@ -1,4 +1,4 @@
-// Datatypes are String, Number, null, undefined, Object
+// Datatypes are String, Number, null, undefined, Object, boolean
 
 let nullNumber = null;
 let unassigned;
