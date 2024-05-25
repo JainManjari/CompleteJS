@@ -91,7 +91,7 @@ let thirdBox = document.getElementById("third-box");
 
 firstBox.addEventListener("click", e=>{
     console.log("first box clicked")
-});
+}, {once:true}); //this event to fired only once 
 
 
 secondBox.addEventListener("click", e=>{
@@ -100,7 +100,6 @@ secondBox.addEventListener("click", e=>{
 
 
 thirdBox.addEventListener("click", e=>{
-    e.stopPropagation();
     e.preventDefault();  // it will stop the default behaviour of the check box
     console.log("third box clicked")
 });
@@ -116,17 +115,18 @@ document.addEventListener("click", e=>{
  * 
  * here when we click on third box, then
  * output
- * third box clicked // stopping event propagation
- * 
- * 
- * but when clicked on first box
- * then output
- * firstbox clicked
+ * third box clicked
+ * second box clicked
+ * first box clicked
  * dom clicked
  * 
  * 
  * 
- * as first box doesn't have event stop propagation
+   here when we click again on third box, then
+ * output
+ * third box clicked
+ * second box clicked  // first box is removed because its event listener is enabled for once
+ * dom clicked
  * 
  
  * 
