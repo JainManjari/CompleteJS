@@ -33,9 +33,6 @@ function asyncTask() {
 asyncTask().then(() => console.log(`${name} is here!`));
 let name = "harry potter";
 
-
-
-
 // chaining
 // const chainPromise = Promise.resolve("done");
 
@@ -49,23 +46,42 @@ let name = "harry potter";
 //     console.log(val);
 // });
 
-
-
-
 // chaining 2
 const chainRejectPromise = Promise.reject("failed");
 
-chainRejectPromise.then((val) => {
-  console.log(val);
-  return "done2";
-}).then((val)=>{
+chainRejectPromise
+  .then((val) => {
+    console.log(val);
+    return "done2";
+  })
+  .then((val) => {
     console.log(val);
     return "done3";
-}).then((val)=>{
+  })
+  .then((val) => {
     console.log(val);
-}).catch((err)=>{
+  })
+  .catch((err) => {
     console.log("error ", err);
+  });
+
+// having one catch for all promises is fine,
+// no need to define catch for each promise in chaining
+
+const makeAPICall = (milliseconds) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("API call completed in ", milliseconds);
+    }, milliseconds);
+  });
+};
+
+const APICalls = [makeAPICall(1000), makeAPICall(500), makeAPICall(2500)];
+
+Promise.all(APICalls).then((values) => {
+  console.log("values"); // all the api calls happen parallely
 });
 
-// having one catch for all promises is fine, 
-// no need to define catch for each promise in chaining
+Promise.race(APICalls).then((value) => {
+  console.log("first api call name", value);
+}); // it tells us which API call got exceuted first
