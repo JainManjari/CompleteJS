@@ -101,6 +101,7 @@ secondBox.addEventListener("click", e=>{
 
 thirdBox.addEventListener("click", e=>{
     e.stopPropagation();
+    e.preventDefault();  // it will stop the default behaviour of the check box
     console.log("third box clicked")
 });
 
