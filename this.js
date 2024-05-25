@@ -27,28 +27,28 @@
 // obj.print();
 
 
-let employee = {
-  name:"manjari",
-  checkThis:function() {
-    // person this
-    console.log("person this ", this);
+// let employee = {
+//   name:"manjari",
+//   checkThis:function() {
+//     // person this
+//     console.log("person this ", this);
 
-    function checkThisAgain() {
-      this.name = "mj";
-      console.log("check this again ", this);
-    }
+//     function checkThisAgain() {
+//       this.name = "mj";
+//       console.log("check this again ", this);
+//     }
 
-    // will print window this because this person is not bind with anything
-    checkThisAgain();
-    // window.name  will be equal to "mj" but this.name would be undefined
-    console.log("print name after checkthisAgain",this.name);
-  }
-}
+//     // will print window this because this person is not bind with anything
+//     checkThisAgain();
+//     // window.name  will be equal to "mj" but this.name would be undefined
+//     console.log("print name after checkthisAgain",this.name);
+//   }
+// }
 
-employee.checkThis();
+// employee.checkThis();
 
-const func = employee.checkThis;
-func();
+// const func = employee.checkThis;
+// func();
 
 
 
@@ -112,27 +112,28 @@ func();
 // */
 
 
-// const person = {
-//   firstName:"John",
-//   lastName: "Doe",
-//   fullName: function () {
-//     console.log("person "+JSON.stringify(this));
-//     return this.firstName + " " + this.lastName;
-//   }
-// }
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function () {
+    console.log("person "+JSON.stringify(this));
+    return this.firstName + " " + this.lastName;
+  }
+}
 
-// const member = {
-//   firstName:"Hege",
-//   lastName: "Nilsen",
-// }
+const member = {
+  firstName:"Hege",
+  lastName: "Nilsen",
+}
 
 
-// person.fullName.apply(new Object());
-// person.fullName.bind(member);
+person.fullName.bind(member);
+person.fullName.apply(new Object());
 
-// let fullName = person.fullName.bind(member);
 
-// console.log("bind "+fullName());
+let fullName = person.fullName.bind(member);
+
+console.log("bind "+fullName());
 
 
 // console.log("fullName this "+person.fullName());
