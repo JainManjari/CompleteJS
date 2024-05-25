@@ -4,16 +4,13 @@ let secondBox = document.getElementById("second-box");
 
 let thirdBox = document.getElementById("third-box");
 
-
 // firstBox.addEventListener("click", e=>{
 //     console.log("first box clicked")
 // });
 
-
 // secondBox.addEventListener("click", e=>{
 //     console.log("second box clicked")
 // });
-
 
 // thirdBox.addEventListener("click", e=>{
 //     console.log("third box clicked")
@@ -24,23 +21,21 @@ let thirdBox = document.getElementById("third-box");
 // });
 
 /**
- * 
- * 
+ *
+ *
  * here when we click on third box, then
  * output
  * third box clicked
  * second clicked
  * first box clicked
  * documnet clicked
- * 
- * 
+ *
+ *
  * as third box is inside second box and second bx inside first box
  * and first box inside dom
  * this is knows as event bubbling
- * 
+ *
  */
-
-
 
 // firstBox.addEventListener("click", e=>{
 //     console.log("first box clicked")
@@ -48,13 +43,11 @@ let thirdBox = document.getElementById("third-box");
 //     capture:true
 // });
 
-
 // secondBox.addEventListener("click", e=>{
 //     console.log("second box clicked")
 // },{
 //     capture:true
 // });
-
 
 // thirdBox.addEventListener("click", e=>{
 //     console.log("third box clicked")
@@ -68,47 +61,37 @@ let thirdBox = document.getElementById("third-box");
 //     capture:true
 // });
 
-
-
 /**
- * 
- * 
+ *
+ *
  * here when we click on third box, then
  * output
  * documnet clicked
  * first box clicked
  * second box clicked
  * third box clicked
- * 
+ *
  *
  * this is knows as event capturing
- * 
+ *
  */
 
+// firstBox.addEventListener("click", e=>{
+//     console.log("first box clicked")
+// }, {once:true}); //this event to fired only once
 
-
-
-
-firstBox.addEventListener("click", e=>{
-    console.log("first box clicked")
-}, {once:true}); //this event to fired only once 
-
-
-secondBox.addEventListener("click", e=>{
-    console.log("second box clicked")
+secondBox.addEventListener("click", (e) => {
+  console.log("second box clicked");
 });
 
-
-thirdBox.addEventListener("click", e=>{
-    e.preventDefault();  // it will stop the default behaviour of the check box
-    console.log("third box clicked")
+thirdBox.addEventListener("click", (e) => {
+  e.preventDefault(); // it will stop the default behaviour of the check box
+  console.log("third box clicked");
 });
 
-document.addEventListener("click", e=>{
-    console.log("dom clicked");
+document.addEventListener("click", (e) => {
+  console.log("dom clicked");
 });
-
-
 
 /**
  * 
@@ -131,3 +114,20 @@ document.addEventListener("click", e=>{
  
  * 
  */
+
+
+
+   
+// event remove listerener
+
+let displayFirstBoxClick = (e) => {
+  console.log("first box clicked");
+};
+
+firstBox.addEventListener("click", displayFirstBoxClick);
+
+// it will remove click event listener with displayFirstBoxClick in 3 s
+setTimeout(
+  () => firstBox.removeEventListener("click", displayFirstBoxClick),
+  3000
+);
