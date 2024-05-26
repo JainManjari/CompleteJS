@@ -22,5 +22,5 @@ Learning about the ES6 javascript on these following topics:
 17. Debounce and Throttle
 18. New Async - async functions, callback, promises, async await
 19. Event listerners - event bubbling, event capturing, event stop propagation, event preventDefault(), event remove listener
-
+20. Learn Redux
 

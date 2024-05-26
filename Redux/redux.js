@@ -30,9 +30,9 @@ const cancelBooking = (name, refundAmount) => {
 
 // Reducers
 const reservationHistory = (oldReservationHistory = [], action) => {
-  if (action == "NEW_BOOKING") {
+  if (action.type === "NEW_BOOKING") {
     return [...oldReservationHistory, action.payload];
-  } else if (action == "CANCEL_BOOKING") {
+  } else if (action.type === "CANCEL_BOOKING") {
     return oldReservationHistory.filter((record) => {
       return record.name !== action.payload.name;
     });
@@ -41,16 +41,16 @@ const reservationHistory = (oldReservationHistory = [], action) => {
 };
 
 const cancellationHistory = (oldCancellationHistory = [], action) => {
-  if (action == "CANCEL_BOOKING") {
-    return [oldCancellationHistory, ...action.payload];
+  if (action.type === "CANCEL_BOOKING") {
+    return [oldCancellationHistory, action.payload];
   }
   return oldCancellationHistory;
 };
 
 const accounting = (totalMoney = 100, action) => {
-  if (action == "NEW_BOOKING") {
+  if (action.type === "NEW_BOOKING") {
     return totalMoney + action.payload.amount;
-  } else if (action == "CANCEL_BOOKING") {
+  } else if (action.type === "CANCEL_BOOKING") {
     return totalMoney - action.payload.refundAmount;
   }
   return totalMoney;
@@ -61,12 +61,20 @@ console.log(Redux);
 
 const { createStore, combineReducers } = Redux;
 
-const railwayCentralStore = combineReducers(
-  reservationHistory,
-  cancellationHistory,
-  accounting
-);
+const railwayCentralStore = combineReducers({
+  reservationHistory:reservationHistory,
+  cancellationHistory:cancellationHistory,
+  accounting:accounting
+});
 
 const store = createStore(railwayCentralStore);
 
-console.log(store);
+const action = newBooking("Manjari Jain", 20);
+console.log(action);
+store.dispatch(action);
+store.dispatch(newBooking("Harry Potter", 12));
+store.dispatch(newBooking("Hello world", 67));
+store.dispatch(newBooking("Hermoine", 3997));
+store.dispatch(cancelBooking("Harry Potter", 10));
+
+console.log(store.getState());
