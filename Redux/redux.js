@@ -57,3 +57,16 @@ const accounting = (totalMoney = 100, action) => {
 };
 
 // Redux store
+console.log(Redux);
+
+const { createStore, combineReducers } = Redux;
+
+const railwayCentralStore = combineReducers(
+  reservationHistory,
+  cancellationHistory,
+  accounting
+);
+
+const store = createStore(railwayCentralStore);
+
+console.log(store);
