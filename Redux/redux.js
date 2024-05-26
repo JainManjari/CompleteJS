@@ -1,3 +1,9 @@
+/**
+ *
+ * redux is used to share data across all components of react without passing it as props to
+ * all its ancestors
+ */
+
 // Action creators
 
 // person who is booking the ticket
@@ -21,3 +27,33 @@ const cancelBooking = (name, refundAmount) => {
     },
   };
 };
+
+// Reducers
+const reservationHistory = (oldReservationHistory = [], action) => {
+  if (action == "NEW_BOOKING") {
+    return [...oldReservationHistory, action.payload];
+  } else if (action == "CANCEL_BOOKING") {
+    return oldReservationHistory.filter((record) => {
+      return record.name !== action.payload.name;
+    });
+  }
+  return oldReservationHistory;
+};
+
+const cancellationHistory = (oldCancellationHistory = [], action) => {
+  if (action == "CANCEL_BOOKING") {
+    return [oldCancellationHistory, ...action.payload];
+  }
+  return oldCancellationHistory;
+};
+
+const accounting = (totalMoney = 100, action) => {
+  if (action == "NEW_BOOKING") {
+    return totalMoney + action.payload.amount;
+  } else if (action == "CANCEL_BOOKING") {
+    return totalMoney - action.payload.refundAmount;
+  }
+  return totalMoney;
+};
+
+// Redux store
